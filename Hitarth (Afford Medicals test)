@@ -1,0 +1,47 @@
+
+const axios = require('axios');
+
+const requestBody = {
+  companyName: "Hits",
+  ownerName: "Hitarth",
+  rollNo: "RA2111003010762",
+  ownerEmail: "hn7323@srmist.edu.in",
+  accessCode: "bntKpm"
+};
+
+axios.post('http://20.244.56.144/test/register', requestBody)
+  .then(response => {
+    console.log('Registration Successful');
+    console.log('Company Name:', response.data.companyName);
+    console.log('Client ID:', response.data.clientID);
+    console.log('Client Secret:', response.data.clientSecret);
+    console.log('Owner Name:', response.data.ownerName);
+    console.log('Owner Email:', response.data.ownerEmail);
+    console.log('Roll No:', response.data.rollNo);
+  })
+  .catch(error => {
+    console.error('Registration Failed:', error.response.data);
+  });
+ 
+
+const requestBody = {
+  companyName: "goMart",
+  clientID: "37bb493c-73d3-47ea-8675-21f66ef9b735",
+  clientSecret: "XOyolORPasKWOdAN",
+  ownerName: "Rahul",
+  ownerEmail: "rahul@abc.edu",
+  rollNo: "1"
+};
+
+// POST request
+axios.post('http://20.244.56.144/test/auth', requestBody)
+  .then(response => {
+    console.log('Authorization Token:', response.data.token_type);
+    console.log('Bearer Token:', response.data.access_token);
+  })
+  .catch(error => {
+    console.error('Failed to obtain authorization token:', error.response.data);
+  });
+
+
+  
